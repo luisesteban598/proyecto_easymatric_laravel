@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class GradeController extends Controller
 {
-    //luis y william
+    //
     public function index()
     {
         $grades = Grade::all();
