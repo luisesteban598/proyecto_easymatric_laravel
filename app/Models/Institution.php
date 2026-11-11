@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Institution extends Model
 {
     use HasFactory;
+    //comentario
 
     public function teachers(){
         return $this->hasMany('App\Models\Teacher');
     }
-
+    //comentario de luis
     public function students(){
         return $this->hasMany('App\Models\Student');
     }
