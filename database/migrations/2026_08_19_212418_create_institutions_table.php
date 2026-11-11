@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('phone_institution');
             $table->string('address_institution');
             $table->string('description_institution');
+            $table->string('nit');
+            $table->string('city');
+            $table->date('class_start_date');
+            $table->date('class_end_date');
+
             $table->timestamps();
         });
     }

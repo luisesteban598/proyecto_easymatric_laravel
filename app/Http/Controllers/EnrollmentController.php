@@ -31,14 +31,13 @@ class EnrollmentController extends Controller
     public function salida(Request $request)
     {
         $enrollments=Enrollment::create($request->all());
-       //return redirect()->route('enrollments.index')->with('success', 'Matrícula registrada con éxito');
-       return response()->json($enrollments);
+        //return redirect()->route('enrollments.index')->with('success', 'Matrícula registrada con éxito');
+        return response()->json($enrollments);
     }
 
     public function show($id)
     {
         $enrollments = Enrollment::find($id);
-
         return response()->json($enrollments);
     }
 

@@ -26,6 +26,6 @@ class Enrollment extends Model
         'student_id',
         'module_id',
         'requirement_id',
-           
+        
     ];
 }

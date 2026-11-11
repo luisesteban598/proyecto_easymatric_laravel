@@ -11,19 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('grade__subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('name_module');
-            $table->string('description_module');
-            $table->string('schedule');
-            $table->string('duration');
-
-            $table->unsignedBigInteger('teacher_id')->nullable();
-            $table->foreign('teacher_id')
+            $table->unsignedBigInteger('grade_level_id')->nullable();
+            $table->foreign('grade_level_id')
                 ->references('id')
-                ->on('teachers')
+                ->on('grade_levels')
                 ->onDelete('set null')
                 ->onUpdate('set null');
+
+            $table->unsignedBigInteger('subject_id')->nullable();
+            $table->foreign('subject_id')
+                ->references('id')
+                ->on('subjects')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+
+
             $table->timestamps();
         });
     }
@@ -33,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('grade__subjects');
     }
 };
