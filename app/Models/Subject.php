@@ -25,6 +25,7 @@ class Subject extends Model
         'duration',
         'module_id',
         'teacher_id',
-       
+        'institution_id'
+
     ];
 }
