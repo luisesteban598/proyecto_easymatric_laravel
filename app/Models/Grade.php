@@ -20,6 +20,9 @@ class Grade extends Model
         'grade',
         'evaluation_type',
         'registration_date',
+        'recovery_grade',
+        'module_id',
+        'academic_period_id',
         'subject_id',
         'student_id',
       

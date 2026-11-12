@@ -30,8 +30,11 @@ class UserSystem extends Model
         'phone',
         'email',
         'password',
-        'rol_id',
-       
+        'document_type',
+        'username',
+        'status',   
+        'institution_id',
+        'rol_id', 
     ];
 }
  

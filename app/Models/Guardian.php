@@ -21,6 +21,8 @@ class Guardian extends Model
         'document',
         'phone',
         'email',
+        'document_type',
+        'emergency_phone'
        
     ];
 }

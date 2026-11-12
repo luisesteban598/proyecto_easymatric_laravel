@@ -30,6 +30,12 @@ class Student extends Model
     }
 
     protected $fillable = [
+        'birth_date',
+        'gender',
+        'address',
+        'socieconomic_stratum',
+        'grade_level_id',
+        'class_group_id',
         'user_system_id',
         'guardian_id',
         'institution_id',

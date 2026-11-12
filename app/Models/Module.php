@@ -25,6 +25,14 @@ class Module extends Model
         'description_module',
         'schedule',
         'duration',
+        'seats',
+        'weekly_hours',
+        'enrollment_opens_at',
+        'enrollment_closes_at',
+        'allow_self_enrollment',
+        'is_published', 
+        'class_group_id',
+        'academic_period_id',
         'teacher_id',
        
     ];

@@ -13,6 +13,25 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->date('birth_date');
+            $table->string('gender');
+            $table->string('address');
+            $table->integer('socieconomic_stratum');
+
+            $table->unsignedBigInteger('grade_level_id')->nullable();
+            $table->foreign('grade_level_id')
+                ->references('id')
+                ->on('grade_levels')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+
+                $table->unsignedBigInteger('class_group_id')->nullable();
+            $table->foreign('class_group_id')
+                ->references('id')
+                ->on('class__groups')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+
             $table->unsignedBigInteger('user_system_id')->nullable();
             $table->foreign('user_system_id')
                 ->references('id')

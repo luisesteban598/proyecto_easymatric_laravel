@@ -23,9 +23,16 @@ class Enrollment extends Model
     protected $fillable = [
         'enrollment_date',
         'status',
+        'enrollment_code',
+        'shift',
+        'reviewed_at',
+        'rejection_reason',
+        'institution_id',
+        'campus_id',
+        'academic_year_id',
+        'grade_level_id',
         'student_id',
         'module_id',
-        'requirement_id',
-           
+        'requirement_id'
     ];
 }
