@@ -29,6 +29,23 @@ class Student extends Model
         return $this->hasMany('App\Models\Grade');
     }
 
+
+    public function gradeLevel(){
+        return $this->belongsTo('App\Models\Grade_level');
+    }
+
+    public function classGroup(){
+        return $this->belongsTo('App\Models\Class_Groups');
+    }
+
+    public function guardians(){
+        return $this->belongsToMany('App\Models\Guardian');
+    }
+
+    public function modules(){
+        return $this->belongsToMany('App\Models\Module');
+    }
+
     protected $fillable = [
         'birth_date',
         'gender',

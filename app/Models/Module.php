@@ -19,6 +19,21 @@ class Module extends Model
     public function enrollments(){
         return $this->hasMany('App\Models\Enrollment');
     }
+    public function classGroup(){
+        return $this->belongsTo('App\Models\Class_Groups');
+    }
+
+    public function academicPeriod(){
+        return $this->belongsTo('App\Models\Academic_Period');
+    }
+
+    public function students(){
+        return $this->belongsToMany('App\Models\Student');
+    }
+
+    public function grades(){
+        return $this->hasMany('App\Models\Grade');
+    }
 
     protected $fillable = [
         'name_module',
@@ -34,6 +49,7 @@ class Module extends Model
         'class_group_id',
         'academic_period_id',
         'teacher_id',
+        'subjects_id',
        
     ];
 }

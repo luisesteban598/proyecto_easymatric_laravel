@@ -9,6 +9,26 @@ class Class_Groups extends Model
 {
     use HasFactory;
 
+    public function campus(){
+        return $this->belongsTo('App\Models\Campuse');
+    }
+
+    public function gradeLevel(){
+        return $this->belongsTo('App\Models\Grade_level');
+    }
+
+    public function academicYear(){
+        return $this->belongsTo('App\Models\Academic_Year');
+    }
+
+    public function students(){
+        return $this->hasMany('App\Models\Student');
+    }
+
+    public function modules(){
+        return $this->hasMany('App\Models\Module');
+    }
+
     protected $fillable = [
         'section',
         'shift',

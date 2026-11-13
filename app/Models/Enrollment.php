@@ -20,6 +20,23 @@ class Enrollment extends Model
         return $this->belongsTo('App\Models\Requirement');
     }
 
+    public function institution(){
+        return $this->belongsTo('App\Models\Institution');
+    }
+
+    public function campus(){
+        return $this->belongsTo('App\Models\Campuse');
+    }
+
+    public function academicYear(){
+        return $this->belongsTo('App\Models\Academic_Year');
+    }
+
+    public function gradeLevel(){
+        return $this->belongsTo('App\Models\Grade_level');
+    }
+
+
     protected $fillable = [
         'enrollment_date',
         'status',

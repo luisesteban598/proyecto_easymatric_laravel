@@ -16,6 +16,14 @@ class Grade extends Model
         return $this->belongsTo('App\Models\Subject');
     }
 
+    public function module(){
+        return $this->belongsTo('App\Models\Module');
+    }
+
+    public function academicPeriod(){
+        return $this->belongsTo('App\Models\Academic_Period');
+    }
+
     protected $fillable = [
         'grade',
         'evaluation_type',

@@ -21,6 +21,18 @@ class UserSystem extends Model
         return $this->hasOne('App\Models\Student');
     }
 
+    public function institution(){
+        return $this->belongsTo('App\Models\Institution');
+    }
+
+    public function staffProfile(){
+        return $this->hasOne('App\Models\Staff_Profile');
+    }
+
+    public function contactMessages(){
+        return $this->hasMany('App\Models\Contact_Message');
+    }
+
     protected $fillable = [
         'first_name',
         'middle_name',

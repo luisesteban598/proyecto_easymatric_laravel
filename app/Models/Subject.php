@@ -19,6 +19,13 @@ class Subject extends Model
     public function grades(){
         return $this->hasMany('App\Models\Grade');
     }
+     public function institution(){
+        return $this->belongsTo('App\Models\Institution', 'institucion_id');
+    }
+
+    public function gradeLevels(){
+        return $this->belongsToMany('App\Models\Grade_level');
+    }
     protected $fillable = [
         'name_subject',
         'description_subject',

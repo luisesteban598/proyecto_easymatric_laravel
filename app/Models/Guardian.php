@@ -10,7 +10,7 @@ class Guardian extends Model
     use HasFactory;
     
     public function students(){
-    return $this->hasMany('App\Models\Student');
+    return $this->belongsToMany('App\Models\Student');
 }
 
    protected $fillable = [

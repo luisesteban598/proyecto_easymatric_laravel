@@ -44,16 +44,16 @@ return new class extends Migration
                 ->on('teachers')
                 ->onDelete('set null')
                 ->onUpdate('set null');
+
+            $table->unsignedBigInteger('subjects_id')->nullable();
+            $table->foreign('subjects_id')
+                ->references('id')
+                ->on('subjects')
+                ->onDelete('set null')
+                ->onUpdate('set null');
             $table->timestamps();
         });
 
-        Schema::table('subjects', function (Blueprint $table) {
-            $table->foreign('module_id')
-                ->references('id')
-                ->on('modules')
-                ->onDelete('set null')
-                ->onUpdate('set null');
-        });
     }
 
     /**
@@ -61,10 +61,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('subjects', function (Blueprint $table) {
-            $table->dropForeign(['module_id']);
-        });
-
         Schema::dropIfExists('modules');
     }
 };
