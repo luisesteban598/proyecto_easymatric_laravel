@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('description_institution');
             $table->string('nit');
             $table->string('city');
+            $table->string('imagen_url');
+            $table->string('imagen_public_id');
             $table->date('class_start_date');
             $table->date('class_end_date');
 

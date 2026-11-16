@@ -24,6 +24,11 @@ class Institution extends Model
         'phone_institution',
         'address_institution',
         'description_institution',
-       
+        'nit',
+        'city',
+        'imagen_url',
+        'imagen_public_id',
+        'class_start_date',
+        'class_end_date'
     ];
 }
