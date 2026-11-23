@@ -16,9 +16,23 @@ return new class extends Migration
             $table->decimal('grade');
             $table->string('evaluation_type');
             $table->date('registration_date');
+            $table->decimal('recovery_grade');
+
+            $table->unsignedBigInteger('module_id')->nullable();
+            $table->foreign('module_id')
+                ->references('id')
+                ->on('modules')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+
+            $table->unsignedBigInteger('academic_period_id')->nullable();
+            $table->foreign('academic_period_id')
+                ->references('id')
+                ->on('academic__periods')
+                ->onDelete('set null')
+                ->onUpdate('set null');      
 
             $table->unsignedBigInteger('subject_id')->nullable();
-
             $table->foreign('subject_id')
                 ->references('id')
                 ->on('subjects')
@@ -26,7 +40,6 @@ return new class extends Migration
                 ->onUpdate('set null');
 
             $table->unsignedBigInteger('student_id')->nullable();
-
             $table->foreign('student_id')
                 ->references('id')
                 ->on('students')

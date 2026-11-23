@@ -19,17 +19,19 @@ return new class extends Migration
 
             $table->unsignedBigInteger('module_id')->nullable();
 
-            $table->foreign('module_id')
-                ->references('id')
-                ->on('modules')
-                ->onDelete('set null')
-                ->onUpdate('set null');
-
             $table->unsignedBigInteger('teacher_id')->nullable();
 
             $table->foreign('teacher_id')
                 ->references('id')
                 ->on('teachers')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+
+            $table->unsignedBigInteger('institucion_id')->nullable();
+
+            $table->foreign('institucion_id')
+                ->references('id')
+                ->on('institutions')
                 ->onDelete('set null')
                 ->onUpdate('set null');
 

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('document');
             $table->string('phone');
             $table->string('email');
+            $table->string('document_type');
+            $table->string('emergency_phone');
             $table->timestamps();
         });
     }

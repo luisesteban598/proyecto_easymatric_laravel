@@ -11,23 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_systems', function (Blueprint $table) {
+        Schema::create('contact__messages', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('middle_name')->nullable();
-            $table->string('last_name');
-            $table->string('second_last_name')->nullable();
-            $table->string('document');
-            $table->string('phone');
+            $table->string('full_name');
             $table->string('email');
-            $table->string('password');
-            
-            $table->unsignedBigInteger('rol_id')->nullable();
-            $table->foreign('rol_id')
+            $table->string('phone');
+            $table->string('subject');
+            $table->string('body');
+            $table->string('status')->default('pending');
+
+            $table->unsignedBigInteger('user_system_id')->nullable();
+            $table->foreign('user_system_id')
                 ->references('id')
-                ->on('rols')
+                ->on('user_systems')
                 ->onDelete('set null')
                 ->onUpdate('set null');
+            
             $table->timestamps();
         });
     }
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_systems');
+        Schema::dropIfExists('contact__messages');
     }
 };
