@@ -27,6 +27,6 @@ class Academic_Period extends Model
         'start_on',
         'end_orden',
         'sort_orden',
-        'academic__year_id'
+        'academic_year_id'
     ];
 }

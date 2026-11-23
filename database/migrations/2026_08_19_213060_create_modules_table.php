@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('enrollment_closes_at');
             $table->boolean('allow_self_enrollment');
             $table->boolean('is_published');
+            // Archivo multimedia que contiene el temario del módulo.
+            $table->unsignedBigInteger('syllabus_media_id')->nullable();
 
             $table->unsignedBigInteger('class_group_id')->nullable();
             $table->foreign('class_group_id')
@@ -44,16 +46,16 @@ return new class extends Migration
                 ->on('teachers')
                 ->onDelete('set null')
                 ->onUpdate('set null');
-
-            $table->unsignedBigInteger('subjects_id')->nullable();
-            $table->foreign('subjects_id')
-                ->references('id')
-                ->on('subjects')
-                ->onDelete('set null')
-                ->onUpdate('set null');
             $table->timestamps();
         });
 
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->foreign('module_id')
+                ->references('id')
+                ->on('modules')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+        });
     }
 
     /**
@@ -61,6 +63,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->dropForeign(['module_id']);
+        });
+
         Schema::dropIfExists('modules');
     }
 };

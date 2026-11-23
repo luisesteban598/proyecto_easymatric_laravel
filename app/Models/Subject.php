@@ -20,7 +20,7 @@ class Subject extends Model
         return $this->hasMany('App\Models\Grade');
     }
      public function institution(){
-        return $this->belongsTo('App\Models\Institution', 'institucion_id');
+         return $this->belongsTo('App\Models\Institution', 'institution_id');
     }
 
     public function gradeLevels(){

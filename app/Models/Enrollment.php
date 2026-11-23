@@ -49,5 +49,7 @@ class Enrollment extends Model
         'academic_year_id',
         'grade_level_id',
         'student_id',
+        'module_id',
+        'requirement_id',
     ];
 }

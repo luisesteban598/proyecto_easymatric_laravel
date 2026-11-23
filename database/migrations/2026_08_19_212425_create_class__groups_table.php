@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('shift');
             $table->integer('capacity');
 
-            $table->unsignedBigInteger('campuse_id')->nullable();
-            $table->foreign('campuse_id')
+            // Sede en la que funciona el grupo académico.
+            $table->unsignedBigInteger('campus_id')->nullable();
+            $table->foreign('campus_id')
                 ->references('id')
                 ->on('campuses')
                 ->onDelete('set null')

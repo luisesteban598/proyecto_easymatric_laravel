@@ -33,7 +33,7 @@ class Class_Groups extends Model
         'section',
         'shift',
         'capacity',
-        'campuse_id',
+        'campus_id',
         'grade_level_id',
         'academic_year_id'
     ];

@@ -18,11 +18,6 @@ return new class extends Migration
             $table->string('duration');
 
             $table->unsignedBigInteger('module_id')->nullable();
-            $table->foreign('module_id')
-                ->references('id')
-                ->on('modules')
-                ->onDelete('set null')
-                ->onUpdate('set null');
 
             $table->unsignedBigInteger('teacher_id')->nullable();
 
@@ -32,9 +27,10 @@ return new class extends Migration
                 ->onDelete('set null')
                 ->onUpdate('set null');
 
-            $table->unsignedBigInteger('institucion_id')->nullable();
+            // Institución propietaria de la materia.
+            $table->unsignedBigInteger('institution_id')->nullable();
 
-            $table->foreign('institucion_id')
+            $table->foreign('institution_id')
                 ->references('id')
                 ->on('institutions')
                 ->onDelete('set null')

@@ -49,7 +49,7 @@ class Module extends Model
         'class_group_id',
         'academic_period_id',
         'teacher_id',
-        'subjects_id',
+        'syllabus_media_id',
        
     ];
 }

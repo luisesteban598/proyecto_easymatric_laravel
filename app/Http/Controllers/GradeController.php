@@ -63,7 +63,7 @@ class GradeController extends Controller
     public function destroy(Grade $grades)
     {
         $grades->delete();
-
+        //return
        return response()->json($grades);
     }
 

@@ -11,7 +11,7 @@ class Module_Enrollment extends Model
 
 
     protected $fillable = [
-        'satus',
+        'status',
         'module_id',
         'student_id',
     ];
