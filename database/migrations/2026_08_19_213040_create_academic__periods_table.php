@@ -19,8 +19,9 @@ return new class extends Migration
             $table->date('end_orden');
             $table->integer('sort_orden');
             
-            $table->unsignedBigInteger('academic__year_id')->nullable();
-            $table->foreign('academic__year_id')
+            // Año académico al que pertenece el periodo.
+            $table->unsignedBigInteger('academic_year_id')->nullable();
+            $table->foreign('academic_year_id')
                 ->references('id')
                 ->on('academic__years')
                 ->onDelete('set null')

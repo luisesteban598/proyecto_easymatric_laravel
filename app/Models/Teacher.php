@@ -25,6 +25,7 @@ class Teacher extends Model
     }
 
     protected $fillable = [
+        'specialty',
         'user_system_id',
         'institution_id',
 

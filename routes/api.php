@@ -4,6 +4,7 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\RequirementController;
 use App\Http\Controllers\RolController;
@@ -97,5 +98,12 @@ Route::post('grades/store',[GradeController::class,'salida'])->name('api.v1.grad
 Route::get('grades/{id}',[GradeController::class,'show'])->name('api.v1.grades.show');
 Route::put('grades/{grades}',[GradeController::class,'update'])->name('api.v1.grades.update');
 Route::delete('grades/{grades}',[GradeController::class,'destroy'])->name('api.v1.grades.destroy');
+
+// Endpoints API CRUD para archivos multimedia.
+Route::get('media/list',[MediaController::class,'index'])->name('api.v1.media.index');
+Route::post('media/store',[MediaController::class,'salida'])->name('api.v1.media.store');
+Route::get('media/{id}',[MediaController::class,'show'])->name('api.v1.media.show');
+Route::put('media/{media}',[MediaController::class,'update'])->name('api.v1.media.update');
+Route::delete('media/{media}',[MediaController::class,'destroy'])->name('api.v1.media.destroy');
 
 

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('enrollment_closes_at');
             $table->boolean('allow_self_enrollment');
             $table->boolean('is_published');
+            // Archivo multimedia que contiene el temario del módulo.
+            $table->unsignedBigInteger('syllabus_media_id')->nullable();
 
             $table->unsignedBigInteger('class_group_id')->nullable();
             $table->foreign('class_group_id')

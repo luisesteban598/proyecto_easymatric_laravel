@@ -16,10 +16,21 @@ class Grade extends Model
         return $this->belongsTo('App\Models\Subject');
     }
 
+    public function module(){
+        return $this->belongsTo('App\Models\Module');
+    }
+
+    public function academicPeriod(){
+        return $this->belongsTo('App\Models\Academic_Period');
+    }
+
     protected $fillable = [
         'grade',
         'evaluation_type',
         'registration_date',
+        'recovery_grade',
+        'module_id',
+        'academic_period_id',
         'subject_id',
         'student_id',
       

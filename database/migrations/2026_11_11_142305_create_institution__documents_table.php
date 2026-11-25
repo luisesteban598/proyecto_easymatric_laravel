@@ -23,8 +23,9 @@ return new class extends Migration
                 ->onDelete('set null')
                 ->onUpdate('set null');
 
-            $table->unsignedBigInteger('campuse_id')->nullable();
-            $table->foreign('campuse_id')
+            // Sede a la que corresponde el documento, si aplica.
+            $table->unsignedBigInteger('campus_id')->nullable();
+            $table->foreign('campus_id')
                 ->references('id')
                 ->on('campuses')
                 ->onDelete('set null')
