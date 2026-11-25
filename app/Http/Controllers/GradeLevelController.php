@@ -14,11 +14,6 @@ class GradeLevelController extends Controller
         return response()->json($gradeLevels);
     }
 
-    public function create()
-    {
-        $institutions = Institution::all();
-        return view('grade_levels.create', compact('institutions'));
-    }
 
     public function store(Request $request)
     {
@@ -32,11 +27,6 @@ class GradeLevelController extends Controller
         return response()->json($gradeLevels);
     }
 
-    public function edit(Grade_level $gradeLevels)
-    {
-        $institutions = Institution::all();
-        return response()->json(compact('gradeLevels', 'institutions'));
-    }
 
     public function update(Request $request, Grade_level $gradeLevels)
     {

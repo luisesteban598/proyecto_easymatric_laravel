@@ -17,14 +17,6 @@ class GradeController extends Controller
         return response()->json($grades);
     }
 
-    public function create()
-    {
-        // Llamamos a todos sin necesidad de escribir uno por uno
-        $subjects = Subject::all();
-        $students = Student::all();
-
-        return view('grades.create', compact('subjects', 'students'));
-    }
 
     public function salida(Request $request)
     {

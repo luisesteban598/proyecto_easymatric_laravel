@@ -8,50 +8,37 @@ use Illuminate\Http\Request;
 
 class AcademicYearController extends Controller
 {
-    public function index()
-    {
-        $academicYears = Academic_Year::with('institution')->get();
-        return view('academic_years.index', compact('academicYears'));
+    public function index(){
+
+        $academic_years=Academic_Year::all();
+
+        return response()->json($academic_years);
     }
 
-    public function create()
-    {
-        $institutions = Institution::all();
-        return view('academic_years.create', compact('institutions'));
+    public function store(Request $request){
+         $academic_years = Academic_Year::create($request->all());
+         return response()->json($academic_years);
+    }
+    
+    public function show ($id){
+
+        $academic_years=Academic_Year::find($id);
+        return response()->json($academic_years);
+
+
     }
 
-    public function store(Request $request)
+    public function update(Request $request, Academic_Year $academic_years)
     {
-        return redirect()->route('academic_years.index');
+    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
+        $academic_years->update($request->all());
+
+        return response()->json($academic_years);
     }
-
-    public function show($id)
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Academic_Year $academic_years)
     {
-        $academicYear = Academic_Year::with(['institution', 'periods', 'classGroups', 'enrollments'])
-            ->findOrFail($id);
-
-        return view('academic_years.show', compact('academicYear'));
-    }
-
-    public function edit($id)
-    {
-        $academicYear = Academic_Year::findOrFail($id);
-        $institutions = Institution::all();
-
-        return view('academic_years.edit', compact('academicYear', 'institutions'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $academicYear = Academic_Year::findOrFail($id);
-        return redirect()->route('academic_years.index');
-    }
-
-    public function destroy($id)
-    {
-        $academicYear = Academic_Year::findOrFail($id);
-        $academicYear->delete();
-
-        return redirect()->route('academic_years.index');
+        $academic_years->delete();
+        return response()->json($academic_years);
     }
 }

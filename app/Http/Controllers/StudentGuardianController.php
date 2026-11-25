@@ -15,14 +15,6 @@ class StudentGuardianController extends Controller
         return response()->json($studentGuardians);
     }
 
-    public function create()
-    {
-        $students = Student::all();
-        $guardians = Guardian::all();
-
-        return view('student_guardians.create', compact('students', 'guardians'));
-    }
-
     public function store(Request $request)
     {
         $studentGuardians = Student_Guardian::create($request->all());
@@ -33,14 +25,6 @@ class StudentGuardianController extends Controller
     {
         $studentGuardians = Student_Guardian::find($id);
         return response()->json($studentGuardians);
-    }
-
-    public function edit(Student_Guardian $studentGuardians)
-    {
-        $students = Student::all();
-        $guardians = Guardian::all();
-
-        return response()->json(compact('studentGuardians', 'students', 'guardians'));
     }
 
     public function update(Request $request, Student_Guardian $studentGuardians)

@@ -18,6 +18,13 @@ return new class extends Migration
             $table->date('registration_date');
             $table->decimal('recovery_grade');
 
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->foreign('student_id')
+                ->references('id')
+                ->on('students')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+
             $table->unsignedBigInteger('module_id')->nullable();
             $table->foreign('module_id')
                 ->references('id')
@@ -25,26 +32,12 @@ return new class extends Migration
                 ->onDelete('set null')
                 ->onUpdate('set null');
 
-            $table->unsignedBigInteger('academic_period_id')->nullable();
-            $table->foreign('academic_period_id')
+            $table->unsignedBigInteger('academic__period_id')->nullable();
+            $table->foreign('academic__period_id')
                 ->references('id')
                 ->on('academic__periods')
                 ->onDelete('set null')
                 ->onUpdate('set null');      
-
-            $table->unsignedBigInteger('subject_id')->nullable();
-            $table->foreign('subject_id')
-                ->references('id')
-                ->on('subjects')
-                ->onDelete('set null')
-                ->onUpdate('set null');
-
-            $table->unsignedBigInteger('student_id')->nullable();
-            $table->foreign('student_id')
-                ->references('id')
-                ->on('students')
-                ->onDelete('set null')
-                ->onUpdate('set null');
 
             $table->timestamps();
         });

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('capacity');
 
             // Sede en la que funciona el grupo académico.
-            $table->unsignedBigInteger('campus_id')->nullable();
-            $table->foreign('campus_id')
+            $table->unsignedBigInteger('campuse_id')->nullable();
+            $table->foreign('campuse_id')
                 ->references('id')
                 ->on('campuses')
                 ->onDelete('set null')
@@ -32,8 +32,8 @@ return new class extends Migration
                 ->onDelete('set null')
                 ->onUpdate('set null');
 
-            $table->unsignedBigInteger('academic_year_id')->nullable();
-            $table->foreign('academic_year_id')
+            $table->unsignedBigInteger('academic__year_id')->nullable();
+            $table->foreign('academic__year_id')
                 ->references('id')
                 ->on('academic__years')
                 ->onDelete('set null')

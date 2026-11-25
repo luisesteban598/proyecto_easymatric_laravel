@@ -15,13 +15,6 @@ class GradeSubjectController extends Controller
         return response()->json($gradeSubjects);
     }
 
-    public function create()
-    {
-        $gradeLevels = Grade_level::all();
-        $subjects = Subject::all();
-
-        return view('grade_subjects.create', compact('gradeLevels', 'subjects'));
-    }
 
     public function store(Request $request)
     {
@@ -35,13 +28,6 @@ class GradeSubjectController extends Controller
         return response()->json($gradeSubjects);
     }
 
-    public function edit(Grade_Subject $gradeSubjects)
-    {
-        $gradeLevels = Grade_level::all();
-        $subjects = Subject::all();
-
-        return response()->json(compact('gradeSubjects', 'gradeLevels', 'subjects'));
-    }
 
     public function update(Request $request, Grade_Subject $gradeSubjects)
     {

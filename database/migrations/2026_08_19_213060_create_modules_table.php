@@ -18,13 +18,27 @@ return new class extends Migration
             $table->string('schedule');
             $table->string('duration');
             $table->integer('seats');
+            $table->string('syllabus_url');
+            $table->string('syllabus_public_id');
             $table->integer('weekly_hours');
             $table->date('enrollment_opens_at');
             $table->date('enrollment_closes_at');
             $table->boolean('allow_self_enrollment');
             $table->boolean('is_published');
-            // Archivo multimedia que contiene el temario del módulo.
-            $table->unsignedBigInteger('syllabus_media_id')->nullable();
+
+            $table->unsignedBigInteger('teacher_id')->nullable();
+            $table->foreign('teacher_id')
+                ->references('id')
+                ->on('teachers')
+                ->onDelete('set null')
+                ->onUpdate('set null');
+
+            $table->unsignedBigInteger('subject_id')->nullable();
+            $table->foreign('subject_id')
+                ->references('id')
+                ->on('subjects')
+                ->onDelete('set null')
+                ->onUpdate('set null');
 
             $table->unsignedBigInteger('class_group_id')->nullable();
             $table->foreign('class_group_id')
@@ -33,28 +47,14 @@ return new class extends Migration
                 ->onDelete('set null')
                 ->onUpdate('set null');
 
-            $table->unsignedBigInteger('academic_period_id')->nullable();
-            $table->foreign('academic_period_id')
+            $table->unsignedBigInteger('academic__period_id')->nullable();
+            $table->foreign('academic__period_id')
                 ->references('id')
                 ->on('academic__periods')
                 ->onDelete('set null')
                 ->onUpdate('set null');    
-
-            $table->unsignedBigInteger('teacher_id')->nullable();
-            $table->foreign('teacher_id')
-                ->references('id')
-                ->on('teachers')
-                ->onDelete('set null')
-                ->onUpdate('set null');
+            
             $table->timestamps();
-        });
-
-        Schema::table('subjects', function (Blueprint $table) {
-            $table->foreign('module_id')
-                ->references('id')
-                ->on('modules')
-                ->onDelete('set null')
-                ->onUpdate('set null');
         });
     }
 

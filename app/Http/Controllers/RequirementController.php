@@ -17,9 +17,6 @@ class RequirementController extends Controller
 
     }
 
-    public function create(){
-        return view('requirements.create');
-    }
     public function salida(Request $request){
        //si se le pone el  return Requirement::create($request->all()); muestra los datos escritos
         $requirements=Requirement::create($request->all());
@@ -36,11 +33,6 @@ class RequirementController extends Controller
 
     }
 
-    
-    public function edit(Requirement $requirements){ 
-
-        return response()->json($requirements);
-    }
     public function update(Request $request, Requirement $requirements){
     //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $requirements->update($request->all());

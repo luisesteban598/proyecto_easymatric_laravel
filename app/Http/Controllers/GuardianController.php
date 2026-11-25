@@ -17,9 +17,6 @@ class GuardianController extends Controller
 
     }
 
-    public function create(){
-        return view('guardians.create');
-    }
     public function salida(Request $request){
        //si se le pone el  return Guardian::create($request->all()); muestra los datos escritos
         $guardians=Guardian::create($request->all());
@@ -36,11 +33,7 @@ class GuardianController extends Controller
 
     }
 
-    
-    public function edit(Guardian $guardians){ 
 
-        return view('guardians.edit', compact('guardians'));
-    }
     public function update(Request $request, Guardian $guardians){
     //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $guardians->update($request->all());

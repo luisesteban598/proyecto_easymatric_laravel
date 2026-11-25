@@ -14,11 +14,6 @@ class RequirementTypeController extends Controller
         return response()->json($requirementTypes);
     }
 
-    public function create()
-    {
-        $institutions = Institution::all();
-        return view('requirement_types.create', compact('institutions'));
-    }
 
     public function store(Request $request)
     {
@@ -32,11 +27,6 @@ class RequirementTypeController extends Controller
         return response()->json($requirementTypes);
     }
 
-    public function edit(Requirement_Type $requirementTypes)
-    {
-        $institutions = Institution::all();
-        return response()->json(compact('requirementTypes', 'institutions'));
-    }
 
     public function update(Request $request, Requirement_Type $requirementTypes)
     {

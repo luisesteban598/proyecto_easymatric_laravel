@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('password');
+            $table->string('photo_url');
+            $table->string('photo_public_id');
             $table->string('document_type');
             $table->string('username');
             $table->string('status');

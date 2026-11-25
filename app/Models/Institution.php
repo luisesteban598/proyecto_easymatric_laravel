@@ -60,6 +60,8 @@ class Institution extends Model
         'description_institution',
         'nit',
         'city',
+        'logo_url',
+        'logo_public_id',
         'imagen_url',
         'imagen_public_id',
         'class_start_date',

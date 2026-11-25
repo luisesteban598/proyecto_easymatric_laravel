@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('academic__periods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
             $table->date('start_on');
             $table->date('end_orden');
             $table->integer('sort_orden');

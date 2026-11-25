@@ -8,55 +8,40 @@ use Illuminate\Http\Request;
 
 class AcademicPeriodController extends Controller
 {
-    public function index()
-    {
-        $periods = Academic_Period::with('academicYear')
-            ->orderBy('sort_orden', 'asc')
-            ->get();
+    public function index(){
 
-        return view('academic_periods.index', compact('periods'));
+        $academicPeriods=Academic_Period::all();
+
+        return response()->json($academicPeriods);
+
+    }
+    
+    public function store(Request $request){
+        $academicPeriods = Academic_Period::create($request->all());
+        return response()->json($academicPeriods);
+    }
+    
+    public function show ($id){
+
+        $academicPeriods=Academic_Period::find($id);
+        return response()->json($academicPeriods);
+
+
+    }
+   
+
+    public function update(Request $request, Academic_Period $academicPeriods)
+    {
+    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
+        $academicPeriods->update($request->all());
+
+        return response()->json($academicPeriods);
+    }
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Academic_Period $academicPeriods)
+    {
+        $academicPeriods->delete();
+        return response()->json($academicPeriods);
     }
 
-    public function create()
-    {
-        $academicYears = Academic_Year::all();
-        return view('academic_periods.create', compact('academicYears'));
-    }
-
-    public function store(Request $request)
-    {
-        return redirect()->route('academic_periods.index')
-            ->with('success', 'Periodo académico creado correctamente.');
-    }
-
-    public function show($id)
-    {
-        $period = Academic_Period::with(['academicYear', 'modules', 'grades'])
-            ->findOrFail($id);
-
-        return view('academic_periods.show', compact('period'));
-    }
-
-    public function edit($id)
-    {
-        $period = Academic_Period::findOrFail($id);
-        $academicYears = Academic_Year::all();
-
-        return view('academic_periods.edit', compact('period', 'academicYears'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        return redirect()->route('academic_periods.index')
-            ->with('success', 'Periodo académico actualizado correctamente.');
-    }
-
-    public function destroy($id)
-    {
-        $period = Academic_Period::findOrFail($id);
-        $period->delete();
-
-        return redirect()->route('academic_periods.index')
-            ->with('success', 'Periodo académico eliminado correctamente.');
-    }
 }

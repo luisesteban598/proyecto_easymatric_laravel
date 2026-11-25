@@ -17,14 +17,6 @@ class StudentController extends Controller
         return response()->json($students);
     }
 
-    public function create()
-    {
-        $userSystems = UserSystem::all();
-        $guardians = Guardian::all();
-        $institutions = Institution::all();
-
-        return view('students.create', compact('userSystems', 'guardians', 'institutions'));
-    }
 
     public function salida(Request $request)
     {
@@ -40,14 +32,6 @@ class StudentController extends Controller
         return response()->json($student);
     }
 
-    public function edit(Student $student)
-    {
-        $userSystems = UserSystem::all();
-        $guardians = Guardian::all();
-        $institutions = Institution::all();
-
-        return response()->json(compact('student', 'userSystems', 'guardians', 'institutions'));
-    }
 
     public function update(Request $request, Student $student)
     {

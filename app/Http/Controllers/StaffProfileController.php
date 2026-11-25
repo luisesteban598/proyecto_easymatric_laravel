@@ -15,13 +15,6 @@ class StaffProfileController extends Controller
         return response()->json($staffProfiles);
     }
 
-    public function create()
-    {
-        $userSystems = UserSystem::all();
-        $institutions = Institution::all();
-
-        return view('staff_profiles.create', compact('userSystems', 'institutions'));
-    }
 
     public function store(Request $request)
     {
@@ -35,13 +28,6 @@ class StaffProfileController extends Controller
         return response()->json($staffProfiles);
     }
 
-    public function edit(Staff_Profile $staffProfiles)
-    {
-        $userSystems = UserSystem::all();
-        $institutions = Institution::all();
-
-        return response()->json(compact('staffProfiles', 'userSystems', 'institutions'));
-    }
 
     public function update(Request $request, Staff_Profile $staffProfiles)
     {

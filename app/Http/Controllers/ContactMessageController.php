@@ -14,12 +14,6 @@ class ContactMessageController extends Controller
         return response()->json($contactMessages);
     }
 
-    public function create()
-    {
-        $userSystems = UserSystem::all();
-        return view('contact_messages.create', compact('userSystems'));
-    }
-
     public function store(Request $request)
     {
         $contactMessages = Contact_Message::create($request->all());
@@ -32,11 +26,6 @@ class ContactMessageController extends Controller
         return response()->json($contactMessages);
     }
 
-    public function edit(Contact_Message $contactMessages)
-    {
-        $userSystems = UserSystem::all();
-        return response()->json(compact('contactMessages', 'userSystems'));
-    }
 
     public function update(Request $request, Contact_Message $contactMessages)
     {

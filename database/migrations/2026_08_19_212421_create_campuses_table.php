@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('city');
             $table->string('phone');
             $table->string('email');
-            $table->boolean('is_main')->default(false);
+            $table->string('facade_url');
+            $table->string('facade_public_id');
+            $table->boolean('is_main');
 
             $table->unsignedBigInteger('institution_id')->nullable();
             $table->foreign('institution_id')

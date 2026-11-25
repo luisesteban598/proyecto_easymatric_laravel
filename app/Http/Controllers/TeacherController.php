@@ -19,12 +19,6 @@ class TeacherController extends Controller
 
     }
 
-    public function create(){
-        //llamamos a todos sin necesidad de escribir uno por uno
-        $userSystems=UserSystem::all(); 
-        $institutions=Institution::all(); 
-        return view('teachers.create',compact('userSystems', 'institutions'));
-    }
 
     public function salida(Request $request){
         $teachers=Teacher::create($request->all());
@@ -41,15 +35,7 @@ class TeacherController extends Controller
 
     }
 
-    public function edit(Teacher $teacher)
-    {
-        // Traemos todos los registros de las tablas foráneas
-        $userSystems = UserSystem::all(); 
-        $institutions = Institution::all(); 
 
-        // Enviamos todo a la vista con compact
-       return response()->json(compact('teacher', 'userSystems', 'institutions'));
-    }
 
     public function update(Request $request, Teacher $teacher)
     {

@@ -14,7 +14,6 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\InstitutionDocumentController;
 use App\Http\Controllers\InstitutionController;
-use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleEnrollmentController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\RequirementTypeController;
@@ -118,13 +117,6 @@ Route::get('institutions/{id}', [InstitutionController::class, 'show'])->name('a
 Route::put('institutions/{institution}', [InstitutionController::class, 'update'])->name('api.v1.institutions.update');
 Route::delete('institutions/{institution}', [InstitutionController::class, 'destroy'])->name('api.v1.institutions.destroy');
 
-// Media
-Route::get('media/list', [MediaController::class, 'index'])->name('api.v1.media.index');
-Route::post('media/store', [MediaController::class, 'salida'])->name('api.v1.media.store');
-Route::get('media/{id}', [MediaController::class, 'show'])->name('api.v1.media.show');
-Route::put('media/{media}', [MediaController::class, 'update'])->name('api.v1.media.update');
-Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('api.v1.media.destroy');
-
 // Module_Enrollment
 Route::get('module-enrollments/list', [ModuleEnrollmentController::class, 'index'])->name('api.v1.module_enrollments.index');
 Route::post('module-enrollments/store', [ModuleEnrollmentController::class, 'store'])->name('api.v1.module_enrollments.store');
@@ -154,11 +146,11 @@ Route::put('requirements/{requirement}', [RequirementController::class, 'update'
 Route::delete('requirements/{requirement}', [RequirementController::class, 'destroy'])->name('api.v1.requirements.destroy');
 
 // Rol
-Route::get('roles/list', [RolController::class, 'index'])->name('api.v1.roles.index');
-Route::post('roles/store', [RolController::class, 'store'])->name('api.v1.roles.store');
-Route::get('roles/{id}', [RolController::class, 'show'])->name('api.v1.roles.show');
-Route::put('roles/{rol}', [RolController::class, 'update'])->name('api.v1.roles.update');
-Route::delete('roles/{rol}', [RolController::class, 'destroy'])->name('api.v1.roles.destroy');
+Route::get('rols/list', [RolController::class, 'index'])->name('api.v1.rols.index');
+Route::post('rols/store', [RolController::class, 'store'])->name('api.v1.rols.store');
+Route::get('rols/{id}', [RolController::class, 'show'])->name('api.v1.rols.show');
+Route::put('rols/{rol}', [RolController::class, 'update'])->name('api.v1.rols.update');
+Route::delete('rols/{rol}', [RolController::class, 'destroy'])->name('api.v1.rols.destroy');
 
 // Staff_Profile
 Route::get('staff-profiles/list', [StaffProfileController::class, 'index'])->name('api.v1.staff_profiles.index');

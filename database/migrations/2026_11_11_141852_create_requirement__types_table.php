@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
-            $table->string('is_required');
+            $table->boolean('is_required');
             $table->string('applies_to_cycle');
 
             $table->unsignedBigInteger('institution_id')->nullable();

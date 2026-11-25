@@ -15,13 +15,7 @@ class ModuleEnrollmentController extends Controller
         return response()->json($moduleEnrollments);
     }
 
-    public function create()
-    {
-        $modules = Module::all();
-        $students = Student::all();
 
-        return view('module_enrollments.create', compact('modules', 'students'));
-    }
 
     public function store(Request $request)
     {
@@ -35,13 +29,6 @@ class ModuleEnrollmentController extends Controller
         return response()->json($moduleEnrollments);
     }
 
-    public function edit(Module_Enrollment $moduleEnrollments)
-    {
-        $modules = Module::all();
-        $students = Student::all();
-
-        return response()->json(compact('moduleEnrollments', 'modules', 'students'));
-    }
 
     public function update(Request $request, Module_Enrollment $moduleEnrollments)
     {

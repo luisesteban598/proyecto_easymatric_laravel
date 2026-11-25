@@ -16,14 +16,6 @@ class ClassGroupsController extends Controller
         return response()->json($classGroups);
     }
 
-    public function create()
-    {
-        $campuses = Campuse::all();
-        $gradeLevels = Grade_level::all();
-        $academicYears = Academic_Year::all();
-
-        return view('class_groups.create', compact('campuses', 'gradeLevels', 'academicYears'));
-    }
 
     public function store(Request $request)
     {
@@ -37,14 +29,6 @@ class ClassGroupsController extends Controller
         return response()->json($classGroups);
     }
 
-    public function edit(Class_Groups $classGroups)
-    {
-        $campuses = Campuse::all();
-        $gradeLevels = Grade_level::all();
-        $academicYears = Academic_Year::all();
-
-        return response()->json(compact('classGroups', 'campuses', 'gradeLevels', 'academicYears'));
-    }
 
     public function update(Request $request, Class_Groups $classGroups)
     {

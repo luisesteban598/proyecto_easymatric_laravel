@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('enrollment__documents', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-
+            $table->string('file_url');
+            $table->string('file_public_id');
+            
             $table->unsignedBigInteger('enrollment_id')->nullable();
             $table->foreign('enrollment_id')
                 ->references('id')
@@ -22,8 +24,8 @@ return new class extends Migration
                 ->onDelete('set null')
                 ->onUpdate('set null');
 
-            $table->unsignedBigInteger('requirement_type_id')->nullable();
-            $table->foreign('requirement_type_id')
+            $table->unsignedBigInteger('requirement__type_id')->nullable();
+            $table->foreign('requirement__type_id')
                 ->references('id')
                 ->on('requirement__types')
                 ->onDelete('set null')

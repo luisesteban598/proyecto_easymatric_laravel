@@ -17,14 +17,6 @@ class SubjectController extends Controller
         return response()->json($subjects);
     }
 
-    public function create()
-    {
-        // Llamamos a todos sin necesidad de escribir uno por uno
-        $modules = Module::all();
-        $teachers = Teacher::all();
-
-        return view('subjects.create', compact('modules', 'teachers'));
-    }
 
     public function salida(Request $request)
     {
@@ -40,15 +32,6 @@ class SubjectController extends Controller
         return response()->json($subjects);
     }
 
-    public function edit(Subject $subjects)
-    {
-        // Traemos todos los registros de las tablas foráneas
-        $modules = Module::all();
-        $teachers = Teacher::all();
-
-        // Enviamos todo a la vista con compact
-        return response()->json(compact('subjects', 'modules', 'teachers'));
-    }
 
     public function update(Request $request, Subject $subjects)
     {

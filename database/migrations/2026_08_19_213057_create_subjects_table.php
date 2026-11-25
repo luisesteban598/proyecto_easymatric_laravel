@@ -17,16 +17,6 @@ return new class extends Migration
             $table->string('description_subject');
             $table->string('duration');
 
-            $table->unsignedBigInteger('module_id')->nullable();
-
-            $table->unsignedBigInteger('teacher_id')->nullable();
-
-            $table->foreign('teacher_id')
-                ->references('id')
-                ->on('teachers')
-                ->onDelete('set null')
-                ->onUpdate('set null');
-
             // Institución propietaria de la materia.
             $table->unsignedBigInteger('institution_id')->nullable();
 

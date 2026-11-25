@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('institution__documents', function (Blueprint $table) {
             $table->id();
             $table->string('doc_type');
+            $table->string('file_url');
+            $table->string('file_public_id');
             $table->string('title');
 
             $table->unsignedBigInteger('institution_id')->nullable();
@@ -24,8 +26,8 @@ return new class extends Migration
                 ->onUpdate('set null');
 
             // Sede a la que corresponde el documento, si aplica.
-            $table->unsignedBigInteger('campus_id')->nullable();
-            $table->foreign('campus_id')
+            $table->unsignedBigInteger('campuse_id')->nullable();
+            $table->foreign('campuse_id')
                 ->references('id')
                 ->on('campuses')
                 ->onDelete('set null')
