@@ -9,7 +9,7 @@ class Academic_Year extends Model
 {
     use HasFactory;
 
-     public function institution(){
+    public function institution(){
         return $this->belongsTo('App\Models\Institution');
     }
 

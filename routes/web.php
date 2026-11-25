@@ -131,3 +131,4 @@ Route::get('media/{id}',[MediaController::class,'show'])->name('media.show');
 Route::put('media/{media}',[MediaController::class,'update'])->name('media.update');
 Route::get('media/{media}/editar',[MediaController::class,'edit'])->name('media.edit');
 Route::delete('media/{media}',[MediaController::class,'destroy'])->name('media.destroy');
+
