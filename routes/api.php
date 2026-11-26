@@ -34,29 +34,29 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('academic-periods/list', [AcademicPeriodController::class, 'index'])->name('api.v1.academic_periods.index');
 Route::post('academic-periods/store', [AcademicPeriodController::class, 'store'])->name('api.v1.academic_periods.store');
 Route::get('academic-periods/{id}', [AcademicPeriodController::class, 'show'])->name('api.v1.academic_periods.show');
-Route::put('academic-periods/{academic_period}', [AcademicPeriodController::class, 'update'])->name('api.v1.academic_periods.update');
-Route::delete('academic-periods/{academic_period}', [AcademicPeriodController::class, 'destroy'])->name('api.v1.academic_periods.destroy');
+Route::put('academic-periods/{academic_period}', [AcademicPeriodController::class, 'update'])->name('api.v1.academic_period.update');
+Route::delete('academic-periods/{academic_period}', [AcademicPeriodController::class, 'destroy'])->name('api.v1.academic_period.destroy');
 
 // Academic_Year
 Route::get('academic-years/list', [AcademicYearController::class, 'index'])->name('api.v1.academic_years.index');
 Route::post('academic-years/store', [AcademicYearController::class, 'store'])->name('api.v1.academic_years.store');
 Route::get('academic-years/{id}', [AcademicYearController::class, 'show'])->name('api.v1.academic_years.show');
-Route::put('academic-years/{academic_year}', [AcademicYearController::class, 'update'])->name('api.v1.academic_years.update');
-Route::delete('academic-years/{academic_year}', [AcademicYearController::class, 'destroy'])->name('api.v1.academic_years.destroy');
+Route::put('academic-years/{academic_year}', [AcademicYearController::class, 'update'])->name('api.v1.academic_year.update');
+Route::delete('academic-years/{academic_year}', [AcademicYearController::class, 'destroy'])->name('api.v1.academic_year.destroy');
 
 // Campuse
 Route::get('campuses/list', [CampuseController::class, 'index'])->name('api.v1.campuses.index');
 Route::post('campuses/store', [CampuseController::class, 'store'])->name('api.v1.campuses.store');
 Route::get('campuses/{id}', [CampuseController::class, 'show'])->name('api.v1.campuses.show');
-Route::put('campuses/{campuse}', [CampuseController::class, 'update'])->name('api.v1.campuses.update');
-Route::delete('campuses/{campuse}', [CampuseController::class, 'destroy'])->name('api.v1.campuses.destroy');
+Route::put('campuses/{campuse}', [CampuseController::class, 'update'])->name('api.v1.campuse.update');
+Route::delete('campuses/{campuse}', [CampuseController::class, 'destroy'])->name('api.v1.campuse.destroy');
 
 // Class_Groups
 Route::get('class-groups/list', [ClassGroupsController::class, 'index'])->name('api.v1.class_groups.index');
 Route::post('class-groups/store', [ClassGroupsController::class, 'store'])->name('api.v1.class_groups.store');
 Route::get('class-groups/{id}', [ClassGroupsController::class, 'show'])->name('api.v1.class_groups.show');
-Route::put('class-groups/{class_group}', [ClassGroupsController::class, 'update'])->name('api.v1.class_groups.update');
-Route::delete('class-groups/{class_group}', [ClassGroupsController::class, 'destroy'])->name('api.v1.class_groups.destroy');
+Route::put('class-groups/{class_group}', [ClassGroupsController::class, 'update'])->name('api.v1.class_group.update');
+Route::delete('class-groups/{class_group}', [ClassGroupsController::class, 'destroy'])->name('api.v1.class_group.destroy');
 
 // Contact_Message
 Route::get('contact-messages/list', [ContactMessageController::class, 'index'])->name('api.v1.contact_messages.index');
@@ -83,8 +83,8 @@ Route::delete('enrollments/{enrollment}', [EnrollmentController::class, 'destroy
 Route::get('grade-levels/list', [GradeLevelController::class, 'index'])->name('api.v1.grade_levels.index');
 Route::post('grade-levels/store', [GradeLevelController::class, 'store'])->name('api.v1.grade_levels.store');
 Route::get('grade-levels/{id}', [GradeLevelController::class, 'show'])->name('api.v1.grade_levels.show');
-Route::put('grade-levels/{grade_level}', [GradeLevelController::class, 'update'])->name('api.v1.grade_levels.update');
-Route::delete('grade-levels/{grade_level}', [GradeLevelController::class, 'destroy'])->name('api.v1.grade_levels.destroy');
+Route::put('grade-levels/{grade_level}', [GradeLevelController::class, 'update'])->name('api.v1.grade_level.update');
+Route::delete('grade-levels/{grade_level}', [GradeLevelController::class, 'destroy'])->name('api.v1.grade_level.destroy');
 
 // Grade_Subject
 Route::get('grade-subjects/list', [GradeSubjectController::class, 'index'])->name('api.v1.grade_subjects.index');

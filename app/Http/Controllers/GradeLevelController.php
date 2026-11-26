@@ -28,15 +28,15 @@ class GradeLevelController extends Controller
     }
 
 
-    public function update(Request $request, Grade_level $gradeLevels)
+    public function update(Request $request, Grade_level $gradeLevel)
     {
-        $gradeLevels->update($request->all());
-        return response()->json($gradeLevels);
+        $gradeLevel->update($request->all());
+        return response()->json($gradeLevel);
     }
 
-    public function destroy(Grade_level $gradeLevels)
+    public function destroy(Grade_level $gradeLevel)
     {
-        $gradeLevels->delete();
-        return response()->json($gradeLevels);
+        $gradeLevel->delete();
+        return response()->json($gradeLevel);
     }
 }

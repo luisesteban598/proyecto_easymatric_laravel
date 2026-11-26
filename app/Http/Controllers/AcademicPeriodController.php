@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 class AcademicPeriodController extends Controller
 {
     public function index(){
-
         $academicPeriods=Academic_Period::all();
-
         return response()->json($academicPeriods);
 
     }
@@ -22,26 +20,20 @@ class AcademicPeriodController extends Controller
     }
     
     public function show ($id){
-
         $academicPeriods=Academic_Period::find($id);
         return response()->json($academicPeriods);
-
-
     }
-   
 
-    public function update(Request $request, Academic_Period $academicPeriods)
+    public function update(Request $request, Academic_Period $academicPeriod)
     {
-    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
-        $academicPeriods->update($request->all());
-
-        return response()->json($academicPeriods);
+        $academicPeriod->update($request->all());
+        return response()->json($academicPeriod);
     }
-    //Destroy se encuentra el registro para luego eliminarlo..
-    public function destroy(Academic_Period $academicPeriods)
+
+    public function destroy(Academic_Period $academicPeriod)
     {
-        $academicPeriods->delete();
-        return response()->json($academicPeriods);
+        $academicPeriod->delete();
+        return response()->json($academicPeriod);
     }
 
 }

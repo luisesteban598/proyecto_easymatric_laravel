@@ -30,15 +30,15 @@ class ClassGroupsController extends Controller
     }
 
 
-    public function update(Request $request, Class_Groups $classGroups)
+    public function update(Request $request, Class_Groups $classGroup)
     {
-        $classGroups->update($request->all());
-        return response()->json($classGroups);
+        $classGroup->update($request->all());
+        return response()->json($classGroup);
     }
 
-    public function destroy(Class_Groups $classGroups)
+    public function destroy(Class_Groups $classGroup)
     {
-        $classGroups->delete();
-        return response()->json($classGroups);
+        $classGroup->delete();
+        return response()->json($classGroup);
     }
 }

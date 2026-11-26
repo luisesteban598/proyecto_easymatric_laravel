@@ -9,19 +9,17 @@ use Cloudinary\Cloudinary;
 
 class CampuseController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $campuses=Campuse::all();
+        $campuses = Campuse::all();
 
         return response()->json($campuses);
     }
-    
-    public function salida(Request $request){
-       //si se le pone el  return Campuse::create($request->all()); muestra los datos escritos
-       // $campuses = Campuse::create($request->all());
-       // return response()->json($campuses);
 
-       $request->validate([
+    public function store(Request $request)
+    {
+        $request->validate([
             'name'           => 'required|string|max:255',
             'address'        => 'required|string|max:255',
             'city'           => 'required|string|max:255',
@@ -67,36 +65,27 @@ class CampuseController extends Controller
             'message' => 'Campuse creada correctamente',
             'data' => $campuse,
         ], 201);
-        
     }
 
 
-    public function show ($id){
-
-     $campuses=Campuse::find($id);
-    return response()->json($campuses);
-    
-
-    }
-
-    
-    public function edit(Campuse $campuses)
-    { //Encuentro el Curso
-
-        return response()->json($campuses);
-    }
-
-     public function update(Request $request, Campuse $campuses)
+    public function show($id)
     {
-    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
-        $campuses->update($request->all());
 
+        $campuses = Campuse::find($id);
         return response()->json($campuses);
     }
-      //Destroy se encuentra el registro para luego eliminarlo..
-    public function destroy(Campuse $campuses)
+
+
+    public function update(Request $request, Campuse $campuse)
     {
-        $campuses->delete();
-        return response()->json($campuses);
+        $campuse->update($request->all());
+
+        return response()->json($campuse);
+    }
+
+    public function destroy(Campuse $campuse)
+    {
+        $campuse->delete();
+        return response()->json($campuse);
     }
 }
