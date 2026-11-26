@@ -3,26 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Module;
-use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Cloudinary\Cloudinary;
 
 class ModuleController extends Controller
 {
     //
-   public function index(){
+    public function index()
+    {
 
-        $modules=Module::all();
+        $modules = Module::all();
 
         return response()->json($modules);
     }
-    
-    public function salida(Request $request){
-       //si se le pone el  return Module::create($request->all()); muestra los datos escritos
-       // $modules = Module::create($request->all());
-       // return response()->json($modules);
 
-       $request->validate([
+    public function salida(Request $request)
+    {
+        //si se le pone el  return Module::create($request->all()); muestra los datos escritos
+        // $modules = Module::create($request->all());
+        // return response()->json($modules);
+
+        $request->validate([
             'name_module'           => 'required|string|max:255',
             'description_module'    => 'required|string|max:255',
             'schedule'              => 'required|string|max:255',
@@ -82,33 +83,31 @@ class ModuleController extends Controller
             'message' => 'Module creada correctamente',
             'data' => $module,
         ], 201);
-        
     }
 
 
-    public function show ($id){
+    public function show($id)
+    {
 
-     $modules=Module::find($id);
-    return response()->json($modules);
-    
-
+        $modules = Module::find($id);
+        return response()->json($modules);
     }
 
-    
+
     public function edit(Module $modules)
     { //Encuentro el Curso
 
         return response()->json($modules);
     }
 
-     public function update(Request $request, Module $modules)
+    public function update(Request $request, Module $modules)
     {
-    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
+        //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $modules->update($request->all());
 
         return response()->json($modules);
     }
-      //Destroy se encuentra el registro para luego eliminarlo..
+    //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Module $modules)
     {
         $modules->delete();

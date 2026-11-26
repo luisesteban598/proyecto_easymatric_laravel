@@ -2,25 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Institution;
 use App\Models\Institution_Document;
+use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
 
 class InstitutionDocumentController extends Controller
 {
-   public function index(){
-
-        $institution_documents=Institution_Document::all();
-
+    public function index()
+    {
+        $institution_documents = Institution_Document::all();
         return response()->json($institution_documents);
     }
-    
-    public function salida(Request $request){
-       //si se le pone el  return Institution_Document::create($request->all()); muestra los datos escritos
-       // $institution_documents = Institution_Document::create($request->all());
-       // return response()->json($institution_documents);
 
-       $request->validate([
+    public function salida(Request $request)
+    {
+        $request->validate([
             'doc_type'       => 'required|string|max:255',
             'title'          => 'required|string|max:255',
             'institution_id' => 'nullable|integer|exists:institutions,id',
@@ -60,33 +56,31 @@ class InstitutionDocumentController extends Controller
             'message' => 'Institution_Document creada correctamente',
             'data' => $institution_document,
         ], 201);
-        
     }
 
 
-    public function show ($id){
+    public function show($id)
+    {
 
-     $institution_documents=Institution_Document::find($id);
-    return response()->json($institution_documents);
-    
-
+        $institution_documents = Institution_Document::find($id);
+        return response()->json($institution_documents);
     }
 
-    
+
     public function edit(Institution_Document $institution_documents)
     { //Encuentro el Curso
 
         return response()->json($institution_documents);
     }
 
-     public function update(Request $request, Institution_Document $institution_documents)
+    public function update(Request $request, Institution_Document $institution_documents)
     {
-    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
+        //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
         $institution_documents->update($request->all());
 
         return response()->json($institution_documents);
     }
-      //Destroy se encuentra el registro para luego eliminarlo..
+    //Destroy se encuentra el registro para luego eliminarlo..
     public function destroy(Institution_Document $institution_documents)
     {
         $institution_documents->delete();

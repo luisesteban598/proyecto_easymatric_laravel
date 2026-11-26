@@ -9,8 +9,8 @@ class UserSystem extends Model
 {
     use HasFactory;
 
-    public function role(){
-        return $this->belongsTo('App\Models\Role');
+    public function rol(){
+        return $this->belongsTo('App\Models\Rol');
     }
 
     public function teacher(){
@@ -42,11 +42,12 @@ class UserSystem extends Model
         'phone',
         'email',
         'password',
+        'photo_url',
+        'photo_public_id',
         'document_type',
         'username',
-        'status',   
+        'status', 
         'institution_id',
-        'rol_id', 
+        'rol_id',
     ];
 }
- 

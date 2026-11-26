@@ -26,6 +26,10 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserSystemController;
 
+use App\Http\Controllers\AuthController;
+
+Route::post('login', [AuthController::class, 'login']);
+
 // Academic_Period
 Route::get('academic-periods/list', [AcademicPeriodController::class, 'index'])->name('api.v1.academic_periods.index');
 Route::post('academic-periods/store', [AcademicPeriodController::class, 'store'])->name('api.v1.academic_periods.store');
@@ -191,5 +195,5 @@ Route::delete('teachers/{teacher}', [TeacherController::class, 'destroy'])->name
 Route::get('user-systems/list', [UserSystemController::class, 'index'])->name('api.v1.user_systems.index');
 Route::post('user-systems/store', [UserSystemController::class, 'store'])->name('api.v1.user_systems.store');
 Route::get('user-systems/{id}', [UserSystemController::class, 'show'])->name('api.v1.user_systems.show');
-Route::put('user-systems/{user_system}', [UserSystemController::class, 'update'])->name('api.v1.user_systems.update');
-Route::delete('user-systems/{user_system}', [UserSystemController::class, 'destroy'])->name('api.v1.user_systems.destroy');
+Route::put('user-systems/{user_system}', [UserSystemController::class, 'update'])->name('api.v1.user_system.update');
+Route::delete('user-systems/{user_system}', [UserSystemController::class, 'destroy'])->name('api.v1.user_system.destroy');
