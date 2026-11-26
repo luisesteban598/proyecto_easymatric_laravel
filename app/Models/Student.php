@@ -47,6 +47,8 @@ class Student extends Model
     }
 
     protected $fillable = [
+        'document',
+        'document_type',
         'birth_date',
         'gender',
         'address',

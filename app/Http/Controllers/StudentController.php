@@ -32,6 +32,31 @@ class StudentController extends Controller
         return response()->json($student);
     }
 
+    public function byDocument(Request $request)
+    {
+        $data = $request->validate([
+            'document' => 'required|string|max:255',
+            'document_type' => 'sometimes|nullable|string|max:255',
+        ]);
+
+        $query = Student::query()->where('document', $data['document']);
+
+        $documentType = $data['document_type'] ?? null;
+        if ($documentType !== null && trim($documentType) !== '') {
+            $query->where('document_type', trim($documentType));
+        }
+
+        $student = $query->first();
+
+        if (!$student) {
+            return response()->json([
+                'message' => 'No se encontró un estudiante con el documento indicado.',
+            ], 404);
+        }
+
+        return response()->json(['data' => $student]);
+    }
+
 
     public function update(Request $request, Student $student)
     {

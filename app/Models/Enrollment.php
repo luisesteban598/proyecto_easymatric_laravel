@@ -4,10 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Enrollment extends Model
 {
     use HasFactory;
+
+    protected static function booted(): void
+    {
+        static::creating(function (Enrollment $enrollment): void {
+            if (blank($enrollment->enrollment_code)) {
+                do {
+                    $enrollmentCode = 'MAT-' . now()->format('Y') . '-' . Str::upper(Str::random(8));
+                } while (static::where('enrollment_code', $enrollmentCode)->exists());
+
+                $enrollment->enrollment_code = $enrollmentCode;
+            }
+        });
+    }
+
     public function student(){
         return $this->belongsTo('App\Models\Student');
     }
@@ -44,12 +59,10 @@ class Enrollment extends Model
         'shift',
         'reviewed_at',
         'rejection_reason',
-        'institution_id',
-        'campus_id',
-        'academic_year_id',
-        'grade_level_id',
         'student_id',
-        'module_id',
-        'requirement_id',
+        'institution_id',
+        'campuse_id',
+        'academic__year_id',
+        'grade_level_id',
     ];
 }

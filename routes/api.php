@@ -173,6 +173,7 @@ Route::delete('student-guardians/{student_guardian}', [StudentGuardianController
 // Student
 Route::get('students/list', [StudentController::class, 'index'])->name('api.v1.students.index');
 Route::post('students/store', [StudentController::class, 'store'])->name('api.v1.students.store');
+Route::get('students/by-document', [StudentController::class, 'byDocument'])->name('api.v1.students.by_document');
 Route::get('students/{id}', [StudentController::class, 'show'])->name('api.v1.students.show');
 Route::put('students/{student}', [StudentController::class, 'update'])->name('api.v1.students.update');
 Route::delete('students/{student}', [StudentController::class, 'destroy'])->name('api.v1.students.destroy');

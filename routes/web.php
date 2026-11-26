@@ -4,7 +4,6 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\InstitutionController;
-use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\RequirementController;
 use App\Http\Controllers\RolController;
@@ -122,13 +121,3 @@ Route::get('grades/{id}',[GradeController::class,'show'])->name('grades.show');
 Route::put('grades/{grades}',[GradeController::class,'update'])->name('grades.update');
 Route::get('grades/{grades}/editar',[GradeController::class,'edit'])->name('grades.edit');
 Route::delete('grades/{grades}',[GradeController::class,'destroy'])->name('grades.destroy');
-
-// Rutas web CRUD para administrar archivos multimedia.
-Route::get('media/create',[MediaController::class,'create'])->name('media.create');
-Route::get('media/list',[MediaController::class,'index'])->name('media.index');
-Route::post('media/store',[MediaController::class,'salida'])->name('media.store');
-Route::get('media/{id}',[MediaController::class,'show'])->name('media.show');
-Route::put('media/{media}',[MediaController::class,'update'])->name('media.update');
-Route::get('media/{media}/editar',[MediaController::class,'edit'])->name('media.edit');
-Route::delete('media/{media}',[MediaController::class,'destroy'])->name('media.destroy');
-

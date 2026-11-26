@@ -41,6 +41,8 @@ class Module extends Model
         'schedule',
         'duration',
         'seats',
+        'syllabus_url',
+        'syllabus_public_id',
         'weekly_hours',
         'enrollment_opens_at',
         'enrollment_closes_at',

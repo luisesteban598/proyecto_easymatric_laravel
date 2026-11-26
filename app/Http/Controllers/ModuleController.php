@@ -38,10 +38,10 @@ class ModuleController extends Controller
             'subject_id'            => 'nullable|integer|exists:subjects,id',
             'class_group_id'        => 'nullable|integer|exists:class__groups,id',
             'academic__period_id'   => 'nullable|integer|exists:academic__periods,id',
-            'imagen'         => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'syllabus'         => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $file = $request->file('imagen');
+        $file = $request->file('syllabus');
 
         $cloudinary = new Cloudinary([
             'cloud' => [
@@ -75,8 +75,8 @@ class ModuleController extends Controller
             'subject_id' => $request->subject_id,
             'class_group_id' => $request->class_group_id,
             'academic__period_id' => $request->academic__period_id,
-            'file_url' => $resultado['secure_url'],
-            'file_public_id' => $resultado['public_id'],
+            'syllabus_url' => $resultado['secure_url'],
+            'syllabus_public_id' => $resultado['public_id'],
         ]);
 
         return response()->json([

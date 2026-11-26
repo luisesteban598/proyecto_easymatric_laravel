@@ -28,6 +28,8 @@ class Campuse extends Model
         'city',
         'phone',
         'email',
+        'facade_url',
+        'facade_public_id',
         'is_main',
         'institution_id'
     ];

@@ -27,10 +27,10 @@ class CampuseController extends Controller
             'email'          => 'required|email|max:255',
             'is_main'        => 'sometimes|boolean',
             'institution_id' => 'nullable|integer|exists:institutions,id',
-            'imagen'         => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'facade'         => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $file = $request->file('imagen');
+        $file = $request->file('facade');
 
         $cloudinary = new Cloudinary([
             'cloud' => [
@@ -49,7 +49,7 @@ class CampuseController extends Controller
             ]
         );
 
-        $campuse = Campuse::create([
+        $campuses = Campuse::create([
             'name' => $request->name,
             'address' => $request->address,
             'city' => $request->city,
@@ -63,7 +63,7 @@ class CampuseController extends Controller
 
         return response()->json([
             'message' => 'Campuse creada correctamente',
-            'data' => $campuse,
+            'data' => $campuses,
         ], 201);
     }
 

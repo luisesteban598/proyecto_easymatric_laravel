@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\UserSystem;
 use App\Models\Rol;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UserSystemController extends Controller
 {
@@ -39,12 +41,36 @@ class UserSystemController extends Controller
         unset($data['password_confirmation']);
         $data['password'] = Hash::make($data['password']);
 
-        $userSystem = UserSystem::create($data);
+        $userSystem = DB::transaction(function () use ($data) {
+            $userSystem = UserSystem::create($data);
+
+            if ($this->isStudentRole($userSystem->rol)) {
+                $userSystem->student()->create([
+                    'document' => $userSystem->document,
+                    'document_type' => $userSystem->document_type,
+                    'institution_id' => $userSystem->institution_id,
+                ]);
+            }
+
+            return $userSystem;
+        });
 
         return response()->json([
             'message' => 'Usuario creado correctamente',
-            'data' => $userSystem,
+            'data' => $userSystem->load('student'),
         ], 201);
+    }
+
+    private function isStudentRole(?Rol $role): bool
+    {
+        if (!$role) {
+            return false;
+        }
+
+        $studentRoleNames = ['student', 'students', 'estudiante', 'estudiantes', 'alumno', 'alumnos'];
+
+        return in_array(Str::slug($role->slug), $studentRoleNames, true)
+            || in_array(Str::slug($role->name_role), $studentRoleNames, true);
     }
 
     public function show($id)

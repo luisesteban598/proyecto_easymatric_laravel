@@ -18,7 +18,7 @@ class EnrollmentController extends Controller
         return response()->json($enrollments);
     }
 
-    public function salida(Request $request)
+    public function store(Request $request)
     {
         $enrollments=Enrollment::create($request->all());
         //return redirect()->route('enrollments.index')->with('success', 'Matrícula registrada con éxito');
