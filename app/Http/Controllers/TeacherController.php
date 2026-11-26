@@ -6,13 +6,41 @@ use App\Models\Institution;
 use App\Models\Teacher;
 use App\Models\UserSystem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TeacherController extends Controller
 {
     //
+    public function profile(Request $request)
+    {
+        $user = $request->user();
+        $role = Str::slug($user->rol?->slug ?? $user->rol?->name_role ?? '');
+        abort_unless(in_array($role, ['teacher', 'docente', 'profesor', 'profesora'], true), 403);
+
+        $teacher = $user->teacher()
+            ->with([
+                'userSystem:id,first_name,middle_name,last_name,second_last_name,document,phone,email,photo_url',
+                'institution:id,name_institution,city',
+            ])
+            ->first();
+
+        abort_unless($teacher, 403, 'La cuenta no tiene un perfil docente asociado.');
+
+        return response()->json([
+            'teacher' => [
+                'id' => $teacher->id,
+                'specialty' => $teacher->specialty,
+                'user' => $teacher->userSystem,
+                'institution' => $teacher->institution,
+            ],
+        ]);
+    }
+
     public function index(){
 
-        $teachers=Teacher::all();
+        $teachers = Teacher::with(
+            'userSystem:id,first_name,middle_name,last_name,second_last_name',
+        )->get();
 
         return response()->json($teachers);
 

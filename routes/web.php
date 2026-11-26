@@ -90,13 +90,15 @@ Route::put('students/{students}',[StudentController::class,'update'])->name('stu
 Route::get('students/{student}/editar',[StudentController::class,'edit'])->name('students.edit');
 Route::delete('students/{students}',[StudentController::class,'destroy'])->name('students.destroy');
 
-Route::get('modules/create',[ModuleController::class,'create'])->name('modules.create');
-Route::get('modules/list',[ModuleController::class,'index'])->name('modules.index');
-Route::post('modules/store',[ModuleController::class,'salida'])->name('modules.store');
-Route::get('modules/{id}',[ModuleController::class,'show'])->name('modules.show');
-Route::put('modules/{modules}',[ModuleController::class,'update'])->name('modules.update');
-Route::get('modules/{modules}/editar',[ModuleController::class,'edit'])->name('modules.edit');
-Route::delete('modules/{modules}',[ModuleController::class,'destroy'])->name('modules.destroy');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('modules/create',[ModuleController::class,'create'])->name('modules.create');
+    Route::get('modules/list',[ModuleController::class,'index'])->name('modules.index');
+    Route::post('modules/store',[ModuleController::class,'salida'])->name('modules.store');
+    Route::get('modules/{id}',[ModuleController::class,'show'])->name('modules.show');
+    Route::put('modules/{module}',[ModuleController::class,'update'])->name('modules.update');
+    Route::get('modules/{modules}/editar',[ModuleController::class,'edit'])->name('modules.edit');
+    Route::delete('modules/{module}',[ModuleController::class,'destroy'])->name('modules.destroy');
+});
 
 Route::get('subjects/create',[SubjectController::class,'create'])->name('subjects.create');
 Route::get('subjects/list',[SubjectController::class,'index'])->name('subjects.index');

@@ -24,7 +24,7 @@ class Module extends Model
     }
 
     public function academicPeriod(){
-        return $this->belongsTo('App\Models\Academic_Period');
+        return $this->belongsTo('App\Models\Academic_Period', 'academic__period_id');
     }
 
     public function students(){
@@ -50,6 +50,7 @@ class Module extends Model
         'is_published', 
         'class_group_id',
         'academic_period_id',
+        'academic__period_id',
         'teacher_id',
         'syllabus_media_id',
        

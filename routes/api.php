@@ -93,13 +93,6 @@ Route::get('grade-subjects/{id}', [GradeSubjectController::class, 'show'])->name
 Route::put('grade-subjects/{grade_subject}', [GradeSubjectController::class, 'update'])->name('api.v1.grade_subjects.update');
 Route::delete('grade-subjects/{grade_subject}', [GradeSubjectController::class, 'destroy'])->name('api.v1.grade_subjects.destroy');
 
-// Grade
-Route::get('grades/list', [GradeController::class, 'index'])->name('api.v1.grades.index');
-Route::post('grades/store', [GradeController::class, 'store'])->name('api.v1.grades.store');
-Route::get('grades/{id}', [GradeController::class, 'show'])->name('api.v1.grades.show');
-Route::put('grades/{grade}', [GradeController::class, 'update'])->name('api.v1.grades.update');
-Route::delete('grades/{grade}', [GradeController::class, 'destroy'])->name('api.v1.grades.destroy');
-
 // Guardian
 Route::get('guardians/list', [GuardianController::class, 'index'])->name('api.v1.guardians.index');
 Route::post('guardians/store', [GuardianController::class, 'store'])->name('api.v1.guardians.store');
@@ -120,20 +113,6 @@ Route::post('institutions/store', [InstitutionController::class, 'store'])->name
 Route::get('institutions/{id}', [InstitutionController::class, 'show'])->name('api.v1.institutions.show');
 Route::put('institutions/{institution}', [InstitutionController::class, 'update'])->name('api.v1.institutions.update');
 Route::delete('institutions/{institution}', [InstitutionController::class, 'destroy'])->name('api.v1.institutions.destroy');
-
-// Module_Enrollment
-Route::get('module-enrollments/list', [ModuleEnrollmentController::class, 'index'])->name('api.v1.module_enrollments.index');
-Route::post('module-enrollments/store', [ModuleEnrollmentController::class, 'store'])->name('api.v1.module_enrollments.store');
-Route::get('module-enrollments/{id}', [ModuleEnrollmentController::class, 'show'])->name('api.v1.module_enrollments.show');
-Route::put('module-enrollments/{module_enrollment}', [ModuleEnrollmentController::class, 'update'])->name('api.v1.module_enrollments.update');
-Route::delete('module-enrollments/{module_enrollment}', [ModuleEnrollmentController::class, 'destroy'])->name('api.v1.module_enrollments.destroy');
-
-// Module
-Route::get('modules/list', [ModuleController::class, 'index'])->name('api.v1.modules.index');
-Route::post('modules/store', [ModuleController::class, 'salida'])->name('api.v1.modules.store');
-Route::get('modules/{id}', [ModuleController::class, 'show'])->name('api.v1.modules.show');
-Route::put('modules/{module}', [ModuleController::class, 'update'])->name('api.v1.modules.update');
-Route::delete('modules/{module}', [ModuleController::class, 'destroy'])->name('api.v1.modules.destroy');
 
 // Requirement_Type
 Route::get('requirement-types/list', [RequirementTypeController::class, 'index'])->name('api.v1.requirement_types.index');
@@ -198,3 +177,27 @@ Route::post('user-systems/store', [UserSystemController::class, 'store'])->name(
 Route::get('user-systems/{id}', [UserSystemController::class, 'show'])->name('api.v1.user_systems.show');
 Route::put('user-systems/{user_system}', [UserSystemController::class, 'update'])->name('api.v1.user_system.update');
 Route::delete('user-systems/{user_system}', [UserSystemController::class, 'destroy'])->name('api.v1.user_system.destroy');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout'])->name('api.v1.logout');
+    Route::get('teacher/profile', [TeacherController::class, 'profile'])->name('api.v1.teacher.profile');
+
+    // Teachers only receive their own modules through the shared list endpoint.
+    Route::get('modules/list', [ModuleController::class, 'index'])->name('api.v1.modules.index');
+    Route::post('modules/store', [ModuleController::class, 'salida'])->name('api.v1.modules.store');
+    Route::get('modules/{id}', [ModuleController::class, 'show'])->name('api.v1.modules.show');
+    Route::put('modules/{module}', [ModuleController::class, 'update'])->name('api.v1.modules.update');
+    Route::delete('modules/{module}', [ModuleController::class, 'destroy'])->name('api.v1.modules.destroy');
+
+    Route::get('module-enrollments/list', [ModuleEnrollmentController::class, 'index'])->name('api.v1.module_enrollments.index');
+    Route::post('module-enrollments/store', [ModuleEnrollmentController::class, 'store'])->name('api.v1.module_enrollments.store');
+    Route::get('module-enrollments/{id}', [ModuleEnrollmentController::class, 'show'])->name('api.v1.module_enrollments.show');
+    Route::put('module-enrollments/{module_enrollment}', [ModuleEnrollmentController::class, 'update'])->name('api.v1.module_enrollments.update');
+    Route::delete('module-enrollments/{module_enrollment}', [ModuleEnrollmentController::class, 'destroy'])->name('api.v1.module_enrollments.destroy');
+
+    Route::get('grades/list', [GradeController::class, 'index'])->name('api.v1.grades.index');
+    Route::post('grades/store', [GradeController::class, 'salida'])->name('api.v1.grades.store');
+    Route::get('grades/{id}', [GradeController::class, 'show'])->name('api.v1.grades.show');
+    Route::put('grades/{grade}', [GradeController::class, 'update'])->name('api.v1.grades.update');
+    Route::delete('grades/{grade}', [GradeController::class, 'destroy'])->name('api.v1.grades.destroy');
+});

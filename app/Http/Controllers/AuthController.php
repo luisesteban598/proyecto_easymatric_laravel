@@ -30,12 +30,23 @@ class AuthController extends Controller
             return response()->json(['message' => 'La cuenta está inactiva.'], 403);
         }
 
+        $teacherId = $user->teacher()->value('id');
+
         return response()->json([
+            'token' => $user->createToken('web')->plainTextToken,
             'user' => [
                 'id' => $user->id,
                 'rol_id' => $user->rol_id,
                 'rol' => $user->rol,
+                'teacher_id' => $teacherId,
             ],
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()?->delete();
+
+        return response()->json(['message' => 'Sesión cerrada correctamente.']);
     }
 }
