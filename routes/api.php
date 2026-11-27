@@ -161,8 +161,8 @@ Route::delete('students/{student}', [StudentController::class, 'destroy'])->name
 Route::get('subjects/list', [SubjectController::class, 'index'])->name('api.v1.subjects.index');
 Route::post('subjects/store', [SubjectController::class, 'store'])->name('api.v1.subjects.store');
 Route::get('subjects/{id}', [SubjectController::class, 'show'])->name('api.v1.subjects.show');
-Route::put('subjects/{subject}', [SubjectController::class, 'update'])->name('api.v1.subjects.update');
-Route::delete('subjects/{subject}', [SubjectController::class, 'destroy'])->name('api.v1.subjects.destroy');
+Route::put('subjects/{subject}', [SubjectController::class, 'update'])->name('api.v1.subject.update');
+Route::delete('subjects/{subject}', [SubjectController::class, 'destroy'])->name('api.v1.subject.destroy');
 
 // Teacher
 Route::get('teachers/list', [TeacherController::class, 'index'])->name('api.v1.teachers.index');

@@ -9,43 +9,33 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-    //
     public function index()
     {
         $subjects = Subject::all();
-
         return response()->json($subjects);
     }
 
-
-    public function salida(Request $request)
+    public function store(Request $request)
     {
         $subjects=Subject::create($request->all());
-        //return redirect()->route('subjects.index')->with('success', 'Asignatura registrada exitosamente');
         return response()->json($subjects);
     }
 
     public function show($id)
     {
         $subjects = Subject::find($id);
-
         return response()->json($subjects);
     }
 
-
-    public function update(Request $request, Subject $subjects)
+    public function update(Request $request, Subject $subject)
     {
-        // Método más sencillo sin necesidad de poner todo lo que pertenece a esa tabla
-        $subjects->update($request->all());
-
-        return response()->json($subjects);
+        $subject->update($request->all());
+        return response()->json($subject);
     }
 
-    // Destroy se encuentra el registro para luego eliminarlo..
-    public function destroy(Subject $subjects)
+    public function destroy(Subject $subject)
     {
-        $subjects->delete();
-
-        return response()->json($subjects);
+        $subject->delete();
+        return response()->json($subject);
     }
 }

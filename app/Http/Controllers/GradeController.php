@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Module;
-use App\Models\Student;
-use App\Models\Subject;
 use App\Models\UserSystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -32,7 +30,6 @@ class GradeController extends Controller
         return response()->json($grades);
     }
 
-
     public function salida(Request $request)
     {
         $this->authorizeModule($request->user(), $request->input('module_id'));
@@ -47,16 +44,6 @@ class GradeController extends Controller
         $this->authorizeGrade($request->user(), $grades);
 
         return response()->json($grades);
-    }
-
-    public function edit(Grade $grades)
-    {
-        // Traemos todos los registros de las tablas foráneas
-        $subjects = Subject::all();
-        $students = Student::all();
-
-        // Enviamos todo a la vista con compact
-        return response()->json(compact('grades', 'subjects', 'students'));
     }
 
     public function update(Request $request, Grade $grade)
@@ -100,5 +87,4 @@ class GradeController extends Controller
     {
         $this->authorizeModule($user, $grade->module_id);
     }
-
 }
