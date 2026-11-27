@@ -27,15 +27,15 @@ class StudentGuardianController extends Controller
         return response()->json($studentGuardians);
     }
 
-    public function update(Request $request, Student_Guardian $studentGuardians)
+    public function update(Request $request, Student_Guardian $studentGuardian)
     {
-        $studentGuardians->update($request->all());
-        return response()->json($studentGuardians);
+        $studentGuardian->update($request->all());
+        return response()->json($studentGuardian);
     }
 
-    public function destroy(Student_Guardian $studentGuardians)
+    public function destroy(Student_Guardian $studentGuardian)
     {
-        $studentGuardians->delete();
-        return response()->json($studentGuardians);
+        $studentGuardian->delete();
+        return response()->json($studentGuardian);
     }
 }

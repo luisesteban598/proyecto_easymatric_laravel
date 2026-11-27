@@ -58,6 +58,5 @@ class Student extends Model
         'user_system_id',
         'guardian_id',
         'institution_id',
-       
     ];
 }

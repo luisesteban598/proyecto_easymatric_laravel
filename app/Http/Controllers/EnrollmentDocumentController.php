@@ -11,22 +11,16 @@ use Illuminate\Http\UploadedFile;
 
 class EnrollmentDocumentController extends Controller
 {
-   public function index(){
-
-        $enrollmentDocuments=Enrollment_Document::all();
-
+    public function index()
+    {
+        $enrollmentDocuments = Enrollment_Document::all();
         return response()->json($enrollmentDocuments);
-
-
     }
 
-    
-    public function store(Request $request){
-       //si se le pone el  return Enrollment_Document::create($request->all()); muestra los datos escritos
-       // $enrollmentDocuments = Enrollment_Document::create($request->all());
-       // return response()->json($enrollmentDocuments);
 
-       $request->validate([
+    public function store(Request $request)
+    {
+        $request->validate([
             'status'              => 'required|string|max:255',
             'enrollment_id'       => 'nullable|integer|exists:enrollments,id',
             'requirement_type_id' => 'nullable|integer|exists:requirement__types,id',
@@ -51,50 +45,45 @@ class EnrollmentDocumentController extends Controller
     }
 
     private function uploadToCloudinary($file)
-{
-    $cloudinary = new Cloudinary([
-        'cloud' => [
-            'cloud_name' => config('services.cloudinary.cloud_name'),
-            'api_key' => config('services.cloudinary.api_key'),
-            'api_secret' => config('services.cloudinary.api_secret'),
-        ],
-        'url' => ['secure' => true],
-    ]);
-
-    $resultado = $cloudinary->uploadApi()->upload(
-        $file->getRealPath(),
-        [
-            'folder' => 'enrollmentDocuments',
-            'resource_type' => 'auto', // o 'image' si solo subes imágenes
-        ]
-    );
-
-    return method_exists($resultado, 'getArrayCopy')
-        ? $resultado->getArrayCopy()
-        : (array) $resultado;
-
-    }
-
-
-    public function show ($id){
-
-    $enrollmentDocuments=Enrollment_Document::find($id);
-    return response()->json($enrollmentDocuments);
-    
-
-    }
-    
-    public function update(Request $request, Enrollment_Document $enrollmentDocuments)
     {
-    //metodo mas sencillo sin nesecidad de poner todo lo que pertenece a esa tabla
-        $enrollmentDocuments->update($request->all());
+        $cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => config('services.cloudinary.cloud_name'),
+                'api_key' => config('services.cloudinary.api_key'),
+                'api_secret' => config('services.cloudinary.api_secret'),
+            ],
+            'url' => ['secure' => true],
+        ]);
 
+        $resultado = $cloudinary->uploadApi()->upload(
+            $file->getRealPath(),
+            [
+                'folder' => 'enrollmentDocuments',
+                'resource_type' => 'auto', // o 'image' si solo subes imágenes
+            ]
+        );
+
+        return method_exists($resultado, 'getArrayCopy')
+            ? $resultado->getArrayCopy()
+            : (array) $resultado;
+    }
+
+
+    public function show($id)
+    {
+        $enrollmentDocuments = Enrollment_Document::find($id);
         return response()->json($enrollmentDocuments);
     }
-      //Destroy se encuentra el registro para luego eliminarlo..
-    public function destroy(Enrollment_Document $enrollmentDocuments)
+
+    public function update(Request $request, Enrollment_Document $enrollmentDocument)
     {
-        $enrollmentDocuments->delete();
-        return response()->json($enrollmentDocuments);
+        $enrollmentDocument->update($request->all());
+        return response()->json($enrollmentDocument);
+    }
+
+    public function destroy(Enrollment_Document $enrollmentDocument)
+    {
+        $enrollmentDocument->delete();
+        return response()->json($enrollmentDocument);
     }
 }

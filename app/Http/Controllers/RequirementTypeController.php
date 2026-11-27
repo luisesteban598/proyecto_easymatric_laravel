@@ -28,15 +28,15 @@ class RequirementTypeController extends Controller
     }
 
 
-    public function update(Request $request, Requirement_Type $requirementTypes)
+    public function update(Request $request, Requirement_Type $requirementType)
     {
-        $requirementTypes->update($request->all());
-        return response()->json($requirementTypes);
+        $requirementType->update($request->all());
+        return response()->json($requirementType);
     }
 
-    public function destroy(Requirement_Type $requirementTypes)
+    public function destroy(Requirement_Type $requirementType)
     {
-        $requirementTypes->delete();
-        return response()->json($requirementTypes);
+        $requirementType->delete();
+        return response()->json($requirementType);
     }
 }

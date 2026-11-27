@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guardian;
-use App\Models\Institution;
 use App\Models\Student;
-use App\Models\UserSystem;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -17,13 +14,10 @@ class StudentController extends Controller
         return response()->json($students);
     }
 
-
-    public function salida(Request $request)
+    public function store(Request $request)
     {
-        $students=Student::create($request->all());
-       //return redirect()->route('students.index')->with('success', 'Estudiante registrado exitosamente');
+        $students = Student::create($request->all());
         return response()->json($students);
-    
     }
 
     public function show($id)
@@ -39,14 +33,21 @@ class StudentController extends Controller
             'document_type' => 'sometimes|nullable|string|max:255',
         ]);
 
-        $query = Student::query()->where('document', $data['document']);
+        $document = trim($data['document']);
+        $documentType = isset($data['document_type'])
+            ? trim($data['document_type'])
+            : null;
 
-        $documentType = $data['document_type'] ?? null;
-        if ($documentType !== null && trim($documentType) !== '') {
-            $query->where('document_type', trim($documentType));
-        }
+        $student = Student::query()
+            ->select(['id', 'user_system_id'])
+            ->whereHas('userSystem', function ($userQuery) use ($document, $documentType) {
+                $userQuery->where('document', $document);
 
-        $student = $query->first();
+                if ($documentType !== null && $documentType !== '') {
+                    $userQuery->where('document_type', $documentType);
+                }
+            })
+            ->first();
 
         if (!$student) {
             return response()->json([
@@ -54,9 +55,10 @@ class StudentController extends Controller
             ], 404);
         }
 
-        return response()->json(['data' => $student]);
+        return response()->json([
+            'data' => $student,
+        ]);
     }
-
 
     public function update(Request $request, Student $student)
     {

@@ -69,15 +69,15 @@ Route::delete('contact-messages/{contact_message}', [ContactMessageController::c
 Route::get('enrollment-documents/list', [EnrollmentDocumentController::class, 'index'])->name('api.v1.enrollment_documents.index');
 Route::post('enrollment-documents/store', [EnrollmentDocumentController::class, 'store'])->name('api.v1.enrollment_documents.store');
 Route::get('enrollment-documents/{id}', [EnrollmentDocumentController::class, 'show'])->name('api.v1.enrollment_documents.show');
-Route::put('enrollment-documents/{enrollment_document}', [EnrollmentDocumentController::class, 'update'])->name('api.v1.enrollment_documents.update');
-Route::delete('enrollment-documents/{enrollment_document}', [EnrollmentDocumentController::class, 'destroy'])->name('api.v1.enrollment_documents.destroy');
+Route::put('enrollment-documents/{enrollment_document}', [EnrollmentDocumentController::class, 'update'])->name('api.v1.enrollment_document.update');
+Route::delete('enrollment-documents/{enrollment_document}', [EnrollmentDocumentController::class, 'destroy'])->name('api.v1.enrollment_document.destroy');
 
 // Enrollment
 Route::get('enrollments/list', [EnrollmentController::class, 'index'])->name('api.v1.enrollments.index');
 Route::post('enrollments/store', [EnrollmentController::class, 'store'])->name('api.v1.enrollments.store');
 Route::get('enrollments/{id}', [EnrollmentController::class, 'show'])->name('api.v1.enrollments.show');
-Route::put('enrollments/{enrollment}', [EnrollmentController::class, 'update'])->name('api.v1.enrollments.update');
-Route::delete('enrollments/{enrollment}', [EnrollmentController::class, 'destroy'])->name('api.v1.enrollments.destroy');
+Route::put('enrollments/{enrollment}', [EnrollmentController::class, 'update'])->name('api.v1.enrollment.update');
+Route::delete('enrollments/{enrollment}', [EnrollmentController::class, 'destroy'])->name('api.v1.enrollment.destroy');
 
 // Grade_level
 Route::get('grade-levels/list', [GradeLevelController::class, 'index'])->name('api.v1.grade_levels.index');
@@ -104,8 +104,8 @@ Route::delete('grades/{grade}', [GradeController::class, 'destroy'])->name('api.
 Route::get('guardians/list', [GuardianController::class, 'index'])->name('api.v1.guardians.index');
 Route::post('guardians/store', [GuardianController::class, 'store'])->name('api.v1.guardians.store');
 Route::get('guardians/{id}', [GuardianController::class, 'show'])->name('api.v1.guardians.show');
-Route::put('guardians/{guardian}', [GuardianController::class, 'update'])->name('api.v1.guardians.update');
-Route::delete('guardians/{guardian}', [GuardianController::class, 'destroy'])->name('api.v1.guardians.destroy');
+Route::put('guardians/{guardian}', [GuardianController::class, 'update'])->name('api.v1.guardian.update');
+Route::delete('guardians/{guardian}', [GuardianController::class, 'destroy'])->name('api.v1.guardian.destroy');
 
 // Institution_Document
 Route::get('institution-documents/list', [InstitutionDocumentController::class, 'index'])->name('api.v1.institution_documents.index');
@@ -139,8 +139,8 @@ Route::delete('modules/{module}', [ModuleController::class, 'destroy'])->name('a
 Route::get('requirement-types/list', [RequirementTypeController::class, 'index'])->name('api.v1.requirement_types.index');
 Route::post('requirement-types/store', [RequirementTypeController::class, 'store'])->name('api.v1.requirement_types.store');
 Route::get('requirement-types/{id}', [RequirementTypeController::class, 'show'])->name('api.v1.requirement_types.show');
-Route::put('requirement-types/{requirement_type}', [RequirementTypeController::class, 'update'])->name('api.v1.requirement_types.update');
-Route::delete('requirement-types/{requirement_type}', [RequirementTypeController::class, 'destroy'])->name('api.v1.requirement_types.destroy');
+Route::put('requirement-types/{requirement_type}', [RequirementTypeController::class, 'update'])->name('api.v1.requirement_type.update');
+Route::delete('requirement-types/{requirement_type}', [RequirementTypeController::class, 'destroy'])->name('api.v1.requirement_type.destroy');
 
 // Requirement
 Route::get('requirements/list', [RequirementController::class, 'index'])->name('api.v1.requirements.index');
@@ -167,16 +167,16 @@ Route::delete('staff-profiles/{staff_profile}', [StaffProfileController::class, 
 Route::get('student-guardians/list', [StudentGuardianController::class, 'index'])->name('api.v1.student_guardians.index');
 Route::post('student-guardians/store', [StudentGuardianController::class, 'store'])->name('api.v1.student_guardians.store');
 Route::get('student-guardians/{id}', [StudentGuardianController::class, 'show'])->name('api.v1.student_guardians.show');
-Route::put('student-guardians/{student_guardian}', [StudentGuardianController::class, 'update'])->name('api.v1.student_guardians.update');
-Route::delete('student-guardians/{student_guardian}', [StudentGuardianController::class, 'destroy'])->name('api.v1.student_guardians.destroy');
+Route::put('student-guardians/{student_guardian}', [StudentGuardianController::class, 'update'])->name('api.v1.student_guardian.update');
+Route::delete('student-guardians/{student_guardian}', [StudentGuardianController::class, 'destroy'])->name('api.v1.student_guardian.destroy');
 
 // Student
 Route::get('students/list', [StudentController::class, 'index'])->name('api.v1.students.index');
 Route::post('students/store', [StudentController::class, 'store'])->name('api.v1.students.store');
 Route::get('students/by-document', [StudentController::class, 'byDocument'])->name('api.v1.students.by_document');
 Route::get('students/{id}', [StudentController::class, 'show'])->name('api.v1.students.show');
-Route::put('students/{student}', [StudentController::class, 'update'])->name('api.v1.students.update');
-Route::delete('students/{student}', [StudentController::class, 'destroy'])->name('api.v1.students.destroy');
+Route::put('students/{student}', [StudentController::class, 'update'])->name('api.v1.student.update');
+Route::delete('students/{student}', [StudentController::class, 'destroy'])->name('api.v1.student.destroy');
 
 // Subject
 Route::get('subjects/list', [SubjectController::class, 'index'])->name('api.v1.subjects.index');

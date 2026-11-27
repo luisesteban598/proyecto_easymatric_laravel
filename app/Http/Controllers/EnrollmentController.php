@@ -32,19 +32,19 @@ class EnrollmentController extends Controller
     }
 
 
-    public function update(Request $request, Enrollment $enrollments)
+    public function update(Request $request, Enrollment $enrollment)
     {
         // Método más sencillo sin necesidad de poner todo lo que pertenece a esa tabla
-        $enrollments->update($request->all());
+        $enrollment->update($request->all());
 
-        return response()->json($enrollments);
+        return response()->json($enrollment);
     }
 
     // Destroy se encuentra el registro para luego eliminarlo..
-    public function destroy(Enrollment $enrollments)
+    public function destroy(Enrollment $enrollment)
     {
-        $enrollments->delete();
+        $enrollment->delete();
 
-        return response()->json($enrollments);
+        return response()->json($enrollment);
     }
 }
