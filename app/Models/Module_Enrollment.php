@@ -9,6 +9,10 @@ class Module_Enrollment extends Model
 {
     use HasFactory;
 
+    public function module()
+    {
+        return $this->belongsTo(Module::class, 'module_id');
+    }
 
     protected $fillable = [
         'status',
